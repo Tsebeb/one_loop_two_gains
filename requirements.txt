@@ -1,0 +1,21 @@
+torch
+torchvision
+torchmetrics
+numpy
+datasets # Huggingface
+transformers
+datasets
+scikit-learn
+timm
+
+# Running Config
+multiprocess
+hydra-core
+tqdm
+# Packages for visualization ...
+seaborn
+tabulate
+plotly
+kaleido
+tabulate
+matplotlib

@@ -1,0 +1,7 @@
+_target_: scenario_setting.pool_based_al.PoolBasedAL
+_partial_: True
+num_cycles: 9
+annotation_budget: 2000
+
+
+

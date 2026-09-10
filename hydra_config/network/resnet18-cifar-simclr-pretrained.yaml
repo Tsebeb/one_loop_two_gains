@@ -1,0 +1,3 @@
+_target_: networks.ResNet18-CIFAR.ResNet18CIFAR
+_partial_: True
+pretrain_path: cifar_simclr_pretrain/resnet18-cifar/model_state_dict.pth

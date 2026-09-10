@@ -1,0 +1,2 @@
+_target_: query_strategy.kcenter_greedy_strategy.KCenterGreedyStrategy
+_partial_: True

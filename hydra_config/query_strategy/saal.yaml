@@ -1,0 +1,5 @@
+_target_: query_strategy.saal_strategy.SAALStrategy
+_partial_: True
+random_subsample: 5000
+rho: 0.05
+use_kmeans_clustering: True

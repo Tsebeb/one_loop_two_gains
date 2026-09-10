@@ -1,0 +1,4 @@
+_target_: networks.ResNet18.ResNet18
+_partial_: True
+pretrain_imagenet: False
+pretrain_path: imagewoof_simclr_pretrain/resnet18/model_state_dict.pth

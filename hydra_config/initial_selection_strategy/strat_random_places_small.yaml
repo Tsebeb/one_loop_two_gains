@@ -1,0 +1,3 @@
+_target_: initial_data_selection.random_class_balanced_selection.RandomClassBalancedSelection
+_partial_: True
+num_samples: 5475

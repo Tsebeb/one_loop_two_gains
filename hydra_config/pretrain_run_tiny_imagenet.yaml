@@ -1,0 +1,19 @@
+defaults:
+  - dataset: tiny_image_simclr_pretrain
+  - network: resnet18-tiny-imagenet
+  - pretrain_strategy: simclr_pretrain_tiny_imagenet
+  - _self_
+
+seed: 0
+epochs: 500
+batch_size: 256
+num_workers: 4
+
+hydra:
+  mode: MULTIRUN
+  job:
+    chdir: True
+  sweep:
+    dir:  pretrain_results/pretrain_tiny_imagenet/
+    subdir: seed_${seed}/
+

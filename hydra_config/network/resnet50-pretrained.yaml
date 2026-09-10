@@ -1,0 +1,3 @@
+_target_: networks.ResNet50.ResNet50
+_partial_: True
+pretrain_imagenet: True

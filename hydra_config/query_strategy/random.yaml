@@ -1,0 +1,2 @@
+_target_: query_strategy.random_strategy.RandomSampling
+_partial_: True

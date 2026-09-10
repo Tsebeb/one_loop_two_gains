@@ -1,0 +1,2 @@
+_target_: networks.ResNet18-CIFAR.ResNet18CIFAR
+_partial_: True

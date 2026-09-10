@@ -1,0 +1,2 @@
+_target_: networks.ResNet18-TinyImageNet.ResNet18TinyImage
+_partial_: True

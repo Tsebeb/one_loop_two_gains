@@ -1,0 +1,55 @@
+defaults:
+  - _self_
+  - dataset: places365_small_no_val_cluster
+  - network: resnet18-pretrained
+  - training_strategy: cifar_dense_stop
+  - query_strategy: margin
+  - initial_selection_strategy: strat_random_places_small
+  - scenario: places_scenario_larger
+
+seed: 0
+epochs: 50
+batch_size: 128
+num_workers: 4
+
+evaluate_train: False
+evaluate_unl: False
+evaluate_val: False
+save_train_embeddings: False
+save_unl_embeddings: False
+save_val_embeddings: False
+validate_on_test: False
+
+optimizer:
+  _target_: torch.optim.AdamW
+  _partial_: True
+  weight_decay: 1e-4
+
+lr_scheduler:
+  _target_: utilities.instantiate_utils.create_sequential_lr
+  _partial_: True
+  lr_schedulers:
+    - _target_: torch.optim.lr_scheduler.LinearLR  # Linear Warmup
+      _partial_: True
+      start_factor: 1e-3
+      end_factor: 1
+      total_iters: 5
+    - _target_: torch.optim.lr_scheduler.CosineAnnealingLR # Decline rest of the epochs in an cosine fashion ...
+      _partial_: True
+      eta_min: 5e-5
+      T_max: 45
+  milestones: [5]
+
+hydra:
+  mode: MULTIRUN
+  job:
+    chdir: True
+  sweep:
+    dir: results/places/
+    subdir: ${hydra.runtime.choices.initial_selection_strategy}/seed_${seed}/${hydra.runtime.choices.training_strategy}/${hydra.runtime.choices.network}/
+  sweeper:
+    params:
+      seed: 0
+      training_strategy: final_places_dense_cnn, final_places_lth_warmup_slow_cnn, final_places_rand_sparse_warmup_slow_cnn
+      network: resnet50-pretrained, timm-convnext-tiny
+

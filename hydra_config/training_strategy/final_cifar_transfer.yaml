@@ -1,0 +1,7 @@
+_target_: training_strategy.dual_stage_transfer_imp.DualStageTransferBase
+_partial_: True
+prune_per_round: 0.2
+final_sparsity: 0.053
+rewind_epoch: 5
+use_train_stopping: True
+train_stopping_threshold: 0.99

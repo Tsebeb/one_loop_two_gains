@@ -1,0 +1,3 @@
+_target_: networks.ResNet18-TinyImageNet.ResNet18TinyImage
+_partial_: True
+pretrain_path: tiny_image_simclr_pretrain/resnet18-tiny-imagenet/model_state_dict.pth

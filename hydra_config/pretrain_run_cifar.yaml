@@ -1,0 +1,19 @@
+defaults:
+  - dataset: cifar_simclr_pretrain
+  - network: resnet18-cifar
+  - pretrain_strategy: simclr_pretrain_cifar
+  - _self_
+
+seed: 0
+epochs: 500
+batch_size: 512
+num_workers: 0
+
+hydra:
+  mode: MULTIRUN
+  job:
+    chdir: True
+  sweep:
+    dir: pretrain_results/pretrain_cifar/
+    subdir: seed_${seed}/
+

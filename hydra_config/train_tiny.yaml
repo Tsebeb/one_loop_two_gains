@@ -1,0 +1,54 @@
+defaults:
+  - _self_
+  - dataset: tiny_image_no_val
+  - network: resnet18-tiny-imagenet-simclr-pretrained
+  - training_strategy: cifar_dense_stop
+  - query_strategy: margin
+  - initial_selection_strategy: strat_random_tiny
+  - scenario: long_al_tiny_image
+
+seed: 0
+epochs: 150
+batch_size: 64
+num_workers: 2
+
+evaluate_train: False
+evaluate_unl: False
+evaluate_val: False
+save_train_embeddings: False
+save_unl_embeddings: False
+save_val_embeddings: False
+validate_on_test: False
+
+optimizer:
+  _target_: torch.optim.AdamW
+  _partial_: True
+  weight_decay: 1e-4
+
+lr_scheduler:
+  _target_: utilities.instantiate_utils.create_sequential_lr
+  _partial_: True
+  lr_schedulers:
+    - _target_: torch.optim.lr_scheduler.LinearLR  # Linear Warmup
+      _partial_: True
+      start_factor: 1e-3
+      end_factor: 1
+      total_iters: 10
+    - _target_: torch.optim.lr_scheduler.CosineAnnealingLR # Decline rest of the epochs in an cosine fashion ...
+      _partial_: True
+      eta_min: 5e-5
+      T_max: 140
+  milestones: [10]
+
+hydra:
+  mode: MULTIRUN
+  job:
+    chdir: True
+  sweep:
+    dir: results/tiny_al/
+    subdir: seed_${seed}/${hydra.runtime.choices.query_strategy}/${hydra.runtime.choices.training_strategy}/
+  sweeper:
+    params:
+      training_strategy: final_cifar_dual_dense, final_cifar_dual_lth, final_cifar_dual_rand, final_cifar_rand_start
+      query_strategy: margin, badge, saal, coreset_greedy, max_herding_rbf, uherding_rbf_adaptive
+

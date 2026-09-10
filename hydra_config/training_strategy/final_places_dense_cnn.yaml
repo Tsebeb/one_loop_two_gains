@@ -1,0 +1,10 @@
+_target_: training_strategy.dual_stage_transfer_lth.DualStageRetrain
+_partial_: True
+prune_per_round: 0.225
+target_sparsity: 0.3
+reactivation_percentage: 0.05
+prunning_method: none # No pruning for this one ... just so that we have also the patience with it ...
+use_train_stopping: True
+train_stopping_threshold: 0.99
+patience_epochs: 15
+warmup_epochs_head_only: 3

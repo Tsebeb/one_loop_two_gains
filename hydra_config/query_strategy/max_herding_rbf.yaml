@@ -1,0 +1,11 @@
+_target_: query_strategy.maxherding_strategy.MaxHerdingStrategy
+_partial_: True
+kernel:
+  _target_: utilities.embedding_kernels.RBFKernel
+  _partial_: True
+  delta: 1.0
+
+normalize_embeddings: True
+random_permute_subsample: True
+subsample_unlabelled: True
+sample_on_device: True

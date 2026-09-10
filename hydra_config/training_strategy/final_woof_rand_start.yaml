@@ -1,0 +1,11 @@
+_target_: training_strategy.dual_stage_transfer_lth.DualStageRetrain
+_partial_: True
+prune_per_round: 0.66
+reactivation_percentage: 0.1
+target_sparsity: 0.055
+prunning_method: random_unstructured
+rewind_epoch: 10
+use_train_stopping: True
+train_stopping_threshold: 0.975
+patience_epochs: 60
+prune_at_start: True

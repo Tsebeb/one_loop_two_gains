@@ -1,0 +1,7 @@
+# Follows the setup of UHerding paper 2x num classes per round
+# Argumentation for High Budget somewhat skewed if the scenario just continues
+# Early benefits will manifest later?
+_target_: scenario_setting.pool_based_al.PoolBasedAL
+_partial_: True
+num_cycles: 9
+annotation_budget: 3650

@@ -1,0 +1,7 @@
+_target_: networks.TimmBasedPruneModel.TimmBasedBackbone
+_partial_: True
+timm_model_name: deit_small_patch16_224
+pretrained: True
+vit_cascade: True
+backbone_lr: 1e-3
+start_pruning_block: 3

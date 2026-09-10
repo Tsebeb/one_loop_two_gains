@@ -1,0 +1,29 @@
+defaults:
+  - _self_
+
+augmentations:
+  train:
+    to_image:
+      _target_: torchvision.transforms.v2.ToImage
+    # Remaining Augmentations are part of the Pretrain method as we need two augmentations from the same sample ...
+  test:
+    to_image:
+      _target_: torchvision.transforms.v2.ToImage
+
+    to_dtype:
+      _target_: torchvision.transforms.v2.ToDtype
+      dtype : ${torch_dtype:"float32"}
+      scale: True
+
+    normalize:
+      _target_: torchvision.transforms.v2.Normalize
+      mean: [ 0.5071, 0.4867, 0.4408 ]
+      std: [ 0.2675, 0.2565, 0.2761 ]
+
+
+name: "cifar"
+num_classes: 100
+image_width: 32
+image_height: 32
+image_channels: 3
+val_split: 0.0

@@ -1,0 +1,20 @@
+defaults:
+  - dataset: imagewoof_simclr_pretrain
+  - network: resnet18
+  - pretrain_strategy: simclr_pretrain_imagewoof
+  - _self_
+
+seed: 0
+epochs: 500
+batch_size: 128
+num_workers: 4
+
+hydra:
+  mode: MULTIRUN
+  job:
+    chdir: True
+  sweep:
+    dir:  pretrain_results/pretrain_imagewoof/
+    subdir: seed_${seed}/
+
+

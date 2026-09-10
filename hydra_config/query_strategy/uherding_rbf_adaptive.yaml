@@ -1,0 +1,14 @@
+_target_: query_strategy.uncertainty_herding_strategy.UncertaintyHerdingStrategy
+_partial_: True
+kernel:
+  _target_: utilities.embedding_kernels.RBFKernel
+  _partial_: True
+  delta: 1.0
+
+normalize_embeddings: True
+random_permute_subsample: True
+subsample_unlabelled: True
+uncertainty_method: margin
+adaptive_delta: True
+adaptive_temp: False
+sample_on_device: True
